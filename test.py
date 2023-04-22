@@ -20,3 +20,29 @@ def middleSubstring(stringInput):
         return stringInput[even_start_number:(even_start_number + middle_number)]
     else:
         return stringInput[odd_start_number:(odd_start_number + middle_number)]
+
+
+def calculateLocation(latitude: float, longitude: float) -> str:
+    return getLatitudeDirecton(latitude) + "/" + getLongitudeDerection(longitude);
+
+
+def getLatitudeDirecton(latitude: float) -> str:
+    if latitude == 0:
+        return "equator"
+    elif latitude >= 0.1:
+        return "north"
+    else:
+        return "south"
+
+def getLongitudeDerection(longitude: float) -> str:
+    if longitude == 0:
+        return "prime meridian"
+    elif longitude >= 0.1:
+        return "east"
+    else:
+        return "west"
+
+
+def upperCaseDomain(email: string) -> string:
+    start_number = email.find("@")
+    return email[start_number:len(email)].upper()
