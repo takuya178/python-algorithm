@@ -46,3 +46,10 @@ def getLongitudeDerection(longitude: float) -> str:
 def upperCaseDomain(email: string) -> string:
     start_number = email.find("@")
     return email[start_number:len(email)].upper()
+
+def isPerfectSquare(x: int, y: int) -> bool:
+    square = math.sqrt(x ** 2 + y ** 2)
+    return hasDecimal(square)
+
+def hasDecimal(x: int) -> bool:
+    return not x % 1 == 0
