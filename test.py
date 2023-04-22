@@ -59,3 +59,47 @@ def calculateGoalMoney(capital: int, year: int) -> int:
         return math.floor(capital * (1.02 ** year))
     else:
         return math.floor(capital * (1.03 ** year))
+
+
+def calcFallingDistance(time: int, gravitational_acceleration: int) -> int:
+    return (gravitational_acceleration * (time ** 2)) / 2
+
+def changeMile(meter: int) -> int:
+    return math.floor(meter * 0.000621371)
+
+def fallingDistance(planet: str, time: int):
+    if planet == "Earth":
+        return changeMile(calcFallingDistance(time, 9.8))
+    elif planet == "Jupiter":
+        return changeMile(calcFallingDistance(time, 24.79))
+    elif planet == "Mercury":
+        return changeMile(calcFallingDistance(time, 3.7))
+    else:
+        return 0
+
+def isLeapYear(year: int) -> bool:
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+def getStateTax(state: str) -> int:
+    if state == "AZ":
+        return 0.049
+    elif state == "CA":
+        return 0.0884
+    elif state == "TX":
+        return 0
+    elif state == "NC":
+        return 0.025
+    else:
+        return 0.05
+
+def calcStateTax(profit: int, tax: int) -> int:
+    return profit * tax
+
+def calcFederalTax(profit: int) -> int:
+    return profit * 0.21
+
+def calculateCorporationTax(state: str, year: int, profit: int) -> int:
+    if isLeapYear(year):
+        return math.ceil(calcStateTax(profit, getStateTax(state)))
+    else:
+        return math.ceil(calcStateTax(profit, getStateTax(state)) + calcFederalTax(profit))
