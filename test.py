@@ -53,3 +53,9 @@ def isPerfectSquare(x: int, y: int) -> bool:
 
 def hasDecimal(x: int) -> bool:
     return not x % 1 == 0
+
+def calculateGoalMoney(capital: int, year: int) -> int:
+    if capital % 2 == 0:
+        return math.floor(capital * (1.02 ** year))
+    else:
+        return math.floor(capital * (1.03 ** year))
