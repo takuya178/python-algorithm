@@ -103,3 +103,32 @@ def calculateCorporationTax(state: str, year: int, profit: int) -> int:
         return math.ceil(calcStateTax(profit, getStateTax(state)))
     else:
         return math.ceil(calcStateTax(profit, getStateTax(state)) + calcFederalTax(profit))
+
+def isSupportedCard(creditCardType: str) -> bool:
+    return creditCardType == "Visa" or creditCardType == "MasterCard"
+
+def calcTip(cost: int) -> int:
+    if cost % 3 == 0:
+        return 0.03 * cost
+    elif cost % 5 == 0:
+        return 0.05 * cost
+    elif cost % 7 == 0:
+        return 0.07 * cost
+    else:
+        return 0.10 * cost
+
+def calcTax(cost: int) -> int:
+    tax = 0.10
+    return cost * tax
+
+def isOverCost(totalCost: int) -> bool:
+    return totalCost >= 300
+
+def processPayment(creditCardType: str, cost: int) -> int:
+    if not isSupportedCard(creditCardType): return -1.0
+    total_cost = cost + calcTip(cost) + calcTax(cost)
+    return total_cost if not isOverCost(total_cost) else -1.0
+
+
+
+
