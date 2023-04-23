@@ -130,5 +130,33 @@ def processPayment(creditCardType: str, cost: int) -> int:
     return total_cost if not isOverCost(total_cost) else -1.0
 
 
+def getGravitationalAcceleration(planet: str) -> str:
+    if planet == "Earth":
+        return 9.8
+    elif planet == "Jupiter":
+        return 24.79
+    elif planet == "Mars":
+        return 3.71
+    elif planet == "Pluto":
+        return 0.58
+    elif planet == "Moon":
+        return 1.62
+    else:
+        return 0
 
+def calcSpeedJustBeforeGround(gravitationalAcceleration: float, height: int) -> int:
+    return math.sqrt(2 * gravitationalAcceleration * height)
+
+def getEmotion(height: int, planet: str) -> str:
+    if getGravitationalAcceleration(planet) == 0: return "no data"
+    speed = calcSpeedJustBeforeGround(getGravitationalAcceleration(planet), height)
+
+    if speed >= 80:
+        return "terrified"
+    elif 60 <= speed <= 80:
+        return "frighten"
+    elif 40 <= speed < 60:
+        return "scared"
+    else:
+        return "afraid"
 
