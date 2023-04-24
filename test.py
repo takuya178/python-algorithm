@@ -172,6 +172,8 @@ def multiplyOf7(number: int):
     return multiplyOf7(number - 1) + 7
 
 
-def recursiveAddition(m: int, n: int) -> int:
-    
+def lenString(string: str) -> int:
+    if len(string) == 0:
+        return 0
+    return lenString(string[:-1]) + 1
 
