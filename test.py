@@ -160,3 +160,18 @@ def getEmotion(height: int, planet: str) -> str:
     else:
         return "afraid"
 
+def climbDownStairs(current):
+    if current == 0: return 0
+
+    return climbDownStairs(current - 1)
+
+def multiplyOf7(number: int):
+    if number == 0:
+        return 0
+
+    return multiplyOf7(number - 1) + 7
+
+
+def recursiveAddition(m: int, n: int) -> int:
+    
+
