@@ -177,3 +177,31 @@ def lenString(string: str) -> int:
         return 0
     return lenString(string[:-1]) + 1
 
+
+def summation(n):
+    if summation == 0:
+        return 0
+    return summation(n - 1) + n
+
+
+def simpleSummation(n: str) -> str:
+    if str <= 0:
+        return 0
+    return simpleSummation(n - 1) + n
+
+
+def factorial(n: str) -> str:
+    if n <= 0:
+        return 1
+    return factorial(n - 1) * n
+
+def squareSummation(n: str) -> str:
+    if n <= 0:
+        return 0
+    return squareSummation(n - 1) + n ** 2
+
+def mergeString(s1: str, s2: str) -> str:
+    if len(s1) == 0:
+        return ""
+    return s1[0] + s2[0] + mergeString(s1[1:], s2[1:])
+
