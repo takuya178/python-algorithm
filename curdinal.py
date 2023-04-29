@@ -22,3 +22,12 @@ def totalSquareArea(x: int) -> int:
 def helperSquareArea(x: int, index: int, result: int) -> int:
     if x == 0: return result
     return helperSquareArea(x - 1, index + 1, result + ((index ** 2) * index))
+
+
+def sheeps(count: int) -> str:
+    return helperSheeps(count, 1, '')
+
+def helperSheeps(count: int, index:int, result: str) -> str:
+    if count == 0: return result
+
+    return helperSheeps(count - 1, index + 1, result + f"{index} sheep ~ ")
