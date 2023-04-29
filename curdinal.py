@@ -7,3 +7,11 @@ def helperPrefix(s1: str, s2: str, index: int, output: str) -> str:
     return helperPrefix(s1, s2, index + 1, output + s1[index])
 
 print(commonPrefix("abcdefg","abcxyz"))
+
+def numberOfDots(x: int) -> int:
+    return helperOfDots(x, 1, 0)
+
+def helperOfDots(x: int, index: int, result: int) ->int:
+    if x == 0: return result
+
+    return helperOfDots(x - 1, index + 1, index + result)
