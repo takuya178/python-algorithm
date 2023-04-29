@@ -205,3 +205,15 @@ def mergeString(s1: str, s2: str) -> str:
         return ""
     return s1[0] + s2[0] + mergeString(s1[1:], s2[1:])
 
+
+def swapPosition(s):
+    return helperPosition(s, len(s), 0, "")
+
+def helperPosition(s1: str, size: int, index: int, output: str) -> str:
+    if index >= size - 1:
+        if size % 2 == 0:
+            return output
+        else:
+            return output + s[-1]
+    return helperPosition(s, size, index + 2, output + s[index + 1] + s[index])
+
