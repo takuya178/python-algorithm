@@ -15,3 +15,10 @@ def helperOfDots(x: int, index: int, result: int) ->int:
     if x == 0: return result
 
     return helperOfDots(x - 1, index + 1, index + result)
+
+def totalSquareArea(x: int) -> int:
+    return helperSquareArea(x, 1, 0)
+
+def helperSquareArea(x: int, index: int, result: int) -> int:
+    if x == 0: return result
+    return helperSquareArea(x - 1, index + 1, result + ((index ** 2) * index))
