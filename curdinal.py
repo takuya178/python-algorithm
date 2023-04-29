@@ -31,3 +31,24 @@ def helperSheeps(count: int, index:int, result: str) -> str:
     if count == 0: return result
 
     return helperSheeps(count - 1, index + 1, result + f"{index} sheep ~ ")
+
+def reverseString(s: str) -> str:
+    helperString(s, 0, "")
+
+def helperString(s: str, index: int, result: str) -> str:
+    if len(s) < index: return result
+    return helperString(s, index + 1, result + s[index:])
+
+
+b = "hello"
+print(b[1:])
+
+def reverseString(s: str) -> str:
+    return helperString(s, 0, "")
+
+
+def helperString(s: str, index: int, result: str) -> str:
+    if len(s) <= index: return result
+    return helperString(s, index + 1, s[index] + result)
+
+print(reverseString("abcd"))
