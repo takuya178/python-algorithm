@@ -52,3 +52,17 @@ def helperString(s: str, index: int, result: str) -> str:
     return helperString(s, index + 1, s[index] + result)
 
 print(reverseString("abcd"))
+
+def countDivisibleByK(n: int, k: int) -> int:
+    return helperDivisibleByK(n, k, 0)
+
+def helperDivisibleByK(n: int, k: int, index: int) -> int:
+    if n % k != 0: return index
+
+    return index + helperDivisibleByK(n / k, k, index + 1)
+
+def countMath(n: int, k: int) -> int:
+    if n % k != 0: return 0
+    return 1 + countMath(n / k, k)
+
+print(countMath(30, 7))
