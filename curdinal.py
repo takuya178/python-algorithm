@@ -70,3 +70,18 @@ print(countMath(30, 7))
 def maximumPeople(x,y):
    if y % x == 0: return x
    return maximumPeople(y % x, y)
+
+import math
+
+def irreducibleFraction(x: int, y: int) -> str:
+   two_gcd = twoGCD(x, y)
+   if math.floor(y / two_gcd) == 1:
+      return f"{math.floor(x / two_gcd)}"
+   else:
+      return f"{math.floor(x / two_gcd)}/{math.floor(y / two_gcd)}"
+
+def twoGCD(x, y):
+   if x % y == 0: return y
+   return twoGCD(y, x % y)
+
+print(irreducibleFraction(24, 42))
