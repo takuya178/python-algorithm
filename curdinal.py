@@ -66,3 +66,7 @@ def countMath(n: int, k: int) -> int:
     return 1 + countMath(n / k, k)
 
 print(countMath(30, 7))
+
+def maximumPeople(x,y):
+   if y % x == 0: return x
+   return maximumPeople(y % x, y)
