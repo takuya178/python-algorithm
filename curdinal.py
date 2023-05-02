@@ -85,3 +85,14 @@ def twoGCD(x, y):
    return twoGCD(y, x % y)
 
 print(irreducibleFraction(24, 42))
+
+def changeSealsWithBread(breadCount: int, sticker: int, seals: int) -> int:
+   if seals < sticker: return breadCount
+   return changeSealsWithBread(breadCount + 1, sticker, (seals - sticker) + 1)
+
+def maxBread(money: int, price: int, sticker: int) -> int:
+   seals, breadCount = money // price, money // price
+   return changeSealsWithBread(breadCount, sticker, seals)
+
+
+print(maxBread(10,2,3))
