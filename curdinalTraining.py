@@ -18,3 +18,13 @@ def stringCompressionHelper(s, right, left, output):
     # rightをleftに格納することで、連続の始まりの値を変更します。
     left = right
     return stringCompressionHelper(s, right, left, output)
+
+def splitAndAdd(digits: int) -> int:
+    return countAdd(digits, len(str(digits)), 0, 0)
+
+def countAdd(digits: int, len_number: int, index: int, add: int) -> int:
+    if len_number == index: return add
+    add += (digits % 10)
+    return countAdd(digits // 10, len_number, index + 1, add)
+
+print(splitAndAdd(19))
