@@ -28,3 +28,11 @@ def countAdd(digits: int, len_number: int, index: int, add: int) -> int:
     return countAdd(digits // 10, len_number, index + 1, add)
 
 print(splitAndAdd(19))
+
+def helperTwoTotal(n: int) -> int:
+    if n == 0: return n
+    return helperTwoTotal(n - 1) + n * 2
+
+def multipleOfTwoTotal(n: int) -> int:
+    if n == 0: return n
+    return helperTwoTotal(n) + multipleOfTwoTotal(n - 1)
