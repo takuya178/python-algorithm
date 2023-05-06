@@ -36,3 +36,10 @@ def helperTwoTotal(n: int) -> int:
 def multipleOfTwoTotal(n: int) -> int:
     if n == 0: return n
     return helperTwoTotal(n) + multipleOfTwoTotal(n - 1)
+
+def fibonacci(n: int) -> int:
+    if n == 1:
+        return 1
+    if n == 0:
+        return 0
+    return fibonacci(n - 1) + fibonacci(n - 2)
