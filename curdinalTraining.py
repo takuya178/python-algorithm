@@ -50,3 +50,10 @@ def numberOfWay(x):
     if x == 2:
         return 2
     return numberOfWay(x - 1) + numberOfWay(x - 2)
+
+
+def towerOfHanoi(discs: int) -> int:
+    if discs == 1:
+        return 1
+
+    return towerOfHanoi(discs - 1) + towerOfHanoi(discs - 1) + 1
