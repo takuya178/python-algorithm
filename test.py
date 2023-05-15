@@ -241,10 +241,30 @@ def helperPalindrome(s: str, index: int, result: bool) -> bool:
     else:
         result = False
 
-    print(s[:index])
-    print(reverse_s[:index])
-
     return helperPalindrome(s, index + 1, result)
 
 def recursiveIsPalindrome(s: str) -> bool:
     return helperPalindrome(s.lower().replace(" ", ""), 1, False)
+
+
+# フィボナッチ数列の総和
+def helperFibonacci(f1: int, f2: int, n: int) -> int:
+    if n < 1: return f1
+    return helperFibonacci(f2, f1 + f2, n - 1)
+
+def helperSumFibonacci(n: int) -> int:
+    if n == 0: return n
+    fibonacci = helperFibonacci(0, 1, n)
+    return helperSumFibonacci(n - 1) + fibonacci
+
+def fibonacciTotal(n: int) -> int:
+    return helperSumFibonacci(n)
+
+# 修正したコード
+def fibonacciTotal(n):
+    # 関数を完成させてください
+    return helper(0,1,n,0)
+
+def helper(fn1, fn2, n, total):
+    if n < 1: return total
+    return helper(fn2, fn1+fn2, n-1, total+fn2)
