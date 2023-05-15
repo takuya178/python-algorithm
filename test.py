@@ -217,3 +217,18 @@ def helperPosition(s1: str, size: int, index: int, output: str) -> str:
             return output + s[-1]
     return helperPosition(s, size, index + 2, output + s[index + 1] + s[index])
 
+def helperReachFundGoal(capitalMoney: int, goalMoney: int, interest: int, year: int) -> int:
+    if capitalMoney >= goalMoney: return year
+
+    if year >= 80: return 80
+
+    if year % 2 == 0:
+        goalMoney *= 1.02
+    else:
+        goalMoney *= 1.03
+
+    return helperReachFundGoal(capitalMoney * (1 + interest / 100), goalMoney, interest, year + 1)
+
+def howLongToReachFundGoal(capitalMoney: int, goalMoney: int, interest: int) -> int:
+    return helperReachFundGoal(capitalMoney, goalMoney, interest, 0)
+
