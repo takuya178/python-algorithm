@@ -232,3 +232,19 @@ def helperReachFundGoal(capitalMoney: int, goalMoney: int, interest: int, year: 
 def howLongToReachFundGoal(capitalMoney: int, goalMoney: int, interest: int) -> int:
     return helperReachFundGoal(capitalMoney, goalMoney, interest, 0)
 
+def helperPalindrome(s: str, index: int, result: bool) -> bool:
+    if len(s) == index: return result
+
+    reverse_s = s[::-1]
+    if s[:index] == reverse_s[:index]:
+        result = True
+    else:
+        result = False
+
+    print(s[:index])
+    print(reverse_s[:index])
+
+    return helperPalindrome(s, index + 1, result)
+
+def recursiveIsPalindrome(s: str) -> bool:
+    return helperPalindrome(s.lower().replace(" ", ""), 1, False)
