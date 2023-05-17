@@ -268,3 +268,17 @@ def fibonacciTotal(n):
 def helper(fn1, fn2, n, total):
     if n < 1: return total
     return helper(fn2, fn1+fn2, n-1, total+fn2)
+
+def splitAndAdd(digits, addDigits) -> int:
+    if digits == 0: return addDigits
+    return splitAndAdd(digits // 10, digits % 10 + addDigits)
+
+def totalNumber(digits, addDigits) -> int:
+    if digits < 10: return addDigits
+    current = splitAndAdd(digits, 0)
+    return totalNumber(current, current + addDigits)
+
+def recursiveDigitsAdded(digits: int) -> int:
+    if digits < 10: return digits
+    return totalNumber(digits, 0)
+
