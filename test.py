@@ -269,6 +269,8 @@ def helper(fn1, fn2, n, total):
     if n < 1: return total
     return helper(fn2, fn1+fn2, n-1, total+fn2)
 
+
+# 分割数字のアルゴリズム
 def splitAndAdd(digits, addDigits) -> int:
     if digits == 0: return addDigits
     return splitAndAdd(digits // 10, digits % 10 + addDigits)
