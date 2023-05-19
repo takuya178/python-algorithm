@@ -25,3 +25,12 @@ def summationOfSummation(n: int) -> int:
     return outPut
 
 print(summationOfSummation(3))
+
+# 整数カウント
+def countBetweenNumbers(digit: int, idStart: int, idEnd: int) -> int:
+    outPut = 0
+    for i in range(idStart, idEnd+1):
+        count = list(str(i)).count(str(digit))
+        outPut += count
+
+    return outPut
