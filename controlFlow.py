@@ -34,3 +34,11 @@ def countBetweenNumbers(digit: int, idStart: int, idEnd: int) -> int:
         outPut += count
 
     return outPut
+
+# 3で割り続ける
+def divideBy3Count(n: int) -> int:
+    count = 0
+    while not n == 1:
+        n = n // 3
+        count += 1
+    return count
