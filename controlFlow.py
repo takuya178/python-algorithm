@@ -70,3 +70,19 @@ def converter(char, n):
     shifted = ascii + n - 26 if ascii + n > 122 else ascii + n
 
     return chr(shifted)
+
+# 素数
+def isPrime(number: str) -> bool:
+    isPrime = False
+    if number == 1: return isPrime
+
+    for i in range(2,number):
+        if number % i != 0:
+            isPrime = True
+    return isPrime
+
+# コードが汚かったので修正
+def isPrime(number):
+    for i in range(2, number) :
+        if number % i == 0: return False
+    return number > 1
