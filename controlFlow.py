@@ -50,3 +50,23 @@ def splitAndAdd(digits: int) -> int:
         outPut += digits % 10
         digits = digits // 10
     return outPut
+
+
+# カエサルの暗号
+# POINT: 文字を文字コードに変換
+def caesarCiper(message,n):
+    string = message.replace(" ","")
+    res = ''
+
+    for i in string:
+        # 文字は26種類なので、1文字分シフトさせた文字と27文字分シフトさせた文字は同じになります
+        # そのため、26で割った余りで文字をシフトさせます
+        res += converter(i, n % 26)
+
+    return res
+
+def converter(char, n):
+    ascii = ord(char)
+    shifted = ascii + n - 26 if ascii + n > 122 else ascii + n
+
+    return chr(shifted)
