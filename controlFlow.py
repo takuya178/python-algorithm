@@ -42,3 +42,11 @@ def divideBy3Count(n: int) -> int:
         n = n // 3
         count += 1
     return count
+
+# 数字の分割
+def splitAndAdd(digits: int) -> int:
+    outPut = 0
+    while not digits > 0:
+        outPut += digits % 10
+        digits = digits // 10
+    return outPut
