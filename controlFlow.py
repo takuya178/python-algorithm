@@ -86,3 +86,20 @@ def isPrime(number):
     for i in range(2, number) :
         if number % i == 0: return False
     return number > 1
+
+
+def doYouFail(string: str) -> str:
+    cnt = 0
+    for i in range(len(string)):
+        if string[i] == 'A': cnt += 1
+
+    return 'pass' if cnt < 3 else 'fail'
+
+# リファクタしたコード
+def doYouFail(string):
+    count = 0
+    for i in string:
+        if i == 'A': count += 1
+        if count >= 3: return "fail"
+
+    return "pass"
