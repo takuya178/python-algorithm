@@ -103,3 +103,37 @@ def doYouFail(string):
         if count >= 3: return "fail"
 
     return "pass"
+
+# 完全数
+def perfectNumberList(n: int) -> str:
+    outPut = ''
+    for i in range(2, n+1):
+        sum_cnt = 0
+        for j in range(1, i):
+            if i % j == 0:
+                sum_cnt += j
+        if i == sum_cnt:
+            outPut += str(sum_cnt) + '-'
+
+    return outPut[:-1] if len(outPut) > 0 else 'none'
+
+print(perfectNumberList(28))
+
+# リファクタしたコード
+import math
+def perfectNumberList(n):
+    numbers = ''
+    for i in range(2, n+1) :
+        if isPerfect(i): numbers += str(i) + '-'
+    return numbers[0:-1] if numbers != '' else 'none'
+
+# 数値を受け取って、パーフェクトナンバーかどうかチェックする関数
+def isPerfect(x) :
+    divisors = 1
+    n = math.ceil(math.sqrt(x))
+    # 約数を足し上げる（1とxを除く）
+    for i in range(2, n) :
+        if x % i == 0:
+            divisors += i
+            divisors += x / i
+    return x == int(divisors)
