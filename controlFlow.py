@@ -137,3 +137,48 @@ def isPerfect(x) :
             divisors += i
             divisors += x / i
     return x == int(divisors)
+
+# 素数の和
+# 自分の数までで割り切れるかどうかみてる
+def isPrime(number):
+    if number < 2:
+        return False
+
+    for i in range(2, number):
+        if number % i == 0:
+            return False
+
+    return True
+
+def sumOfAllPrimes(n: int) -> int:
+    prime_list = []
+    for i in range(1, n+1):
+        if isPrime(i):
+            prime_list.append(i)
+
+    return sum(prime_list)
+
+
+# 10進数から16進数
+def decimalToHexadecimal(decNumber: int) -> str:
+    dec_number_list = ['A', 'B', 'C', 'D', 'E', 'F']
+    bit = ''
+    while decNumber >= 1:
+        bit = (dec_number_list[(decNumber%16) - 10] if decNumber % 16 >= 10 else str(decNumber % 16)) + bit
+        decNumber = decNumber // 16
+
+    return bit
+
+import math
+def decimalToHexadecimal(decNumber):
+    hexadecimal = "0123456789ABCDEF"
+    hex = ''
+    currentHex = 0
+
+    while decNumber >= 0:
+        currentHex = decNumber % 16
+        hex = hexadecimal[currentHex] + hex
+        decNumber = math.floor(decNumber/16)
+        if decNumber == 0: break
+
+    return hex
