@@ -191,6 +191,7 @@ def oneComplement(bits: str) -> str:
 
     return outPut
 
+# 2の補数
 def twosComplement(bits):
     twosComplement = onesComplement(bits)
     carryOut = False
