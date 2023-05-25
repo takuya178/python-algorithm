@@ -182,3 +182,11 @@ def decimalToHexadecimal(decNumber):
         if decNumber == 0: break
 
     return hex
+
+# 1の補数
+def oneComplement(bits: str) -> str:
+    outPut = ''
+    for i in range(len(bits)):
+        outPut += '0' if bits[i] == '1' else '1'
+
+    return outPut
