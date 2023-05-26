@@ -38,3 +38,31 @@ class Dog:
 
     def calcHumanAge(self) -> int:
         return 12 + (self.age - 1) * 7
+
+import math
+
+class Animal:
+    def __init__(
+        self,
+        name: str,
+        weightKg: int,
+        heightM: int,
+        isPredator: bool,
+        speedKph: int,
+    ):
+        self.name = name
+        self.weighKg = weightKg
+        self.heightM = heightM
+        self.isPredator = isPredator
+        self.speedKph = speedKph
+
+    activityMultiplier = 1.2
+
+    def getBmi(self) -> int:
+        return math.floor(round(self.weighKg / (self.heightM**2), 2) * 100) / 100
+
+    def getDailyCalories(self) -> int:
+        return math.floor(round(70 * (self.weighKg**0.75) * self.activityMultiplier, 2) * 100) / 100
+
+    def isDangerous(self) -> bool:
+        return True if self.isPredator or self.heightM >= 1.7 or self.speedKph >= 35 else False
