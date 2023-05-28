@@ -66,3 +66,52 @@ class RGB:
 
     def getColorShade(self) -> str:
         return self.colorShade(self.red, self.green, self.blue)
+
+color1 = RGB(0, 153, 255)
+print(color1.getHexCode())
+print(color1.getBits())
+print(color1.getColorShade())
+
+color2 = RGB(255, 153, 204)
+print(color2.getHexCode())
+print(color2.getBits())
+print(color2.getColorShade())
+
+color3 = RGB(0, 87, 0)
+print(color3.getHexCode())
+print(color3.getBits())
+print(color3.getColorShade())
+
+gray = RGB(123, 123, 123)
+print(gray.getHexCode())
+print(gray.getBits())
+print(gray.getColorShade())
+
+
+import math
+
+class Point:
+    def __init__(self, x: int, y: int):
+        self.x = x
+        self.y = y
+
+
+class Line:
+    def __init__(self, point1: Point, point2: Point):
+        self.point1 = point1
+        self.point2 = point2
+
+    def getLength(self) -> int:
+        lineX = math.fabs(self.point2.x - self.point1.x)
+        lineY = math.fabs(self.point2.y - self.point1.y)
+        return int(math.sqrt(lineX ** 2 + lineY ** 2))
+
+a = Point(3, 1)
+b = Point(3, 6)
+lineAB = Line(a, b)
+print(lineAB.getLength())
+
+c = Point(1, 3)
+d = Point(6, 15)
+lineCD = Line(c, d)
+print(lineCD.getLength())
