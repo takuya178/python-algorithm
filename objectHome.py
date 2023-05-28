@@ -115,3 +115,40 @@ c = Point(1, 3)
 d = Point(6, 15)
 lineCD = Line(c, d)
 print(lineCD.getLength())
+
+class BankAccount:
+    def __init__(self, bankName: str, ownerName: str, savings: int):
+        self.bankName = bankName
+        self.ownerName = ownerName
+        self.savings = savings
+
+    def withdrawMoney(self, withdrawAmount: int) -> int:
+        if self.savings * 0.2 < withdrawAmount:
+            self.savings = self.savings - self.savings * 0.2
+        else:
+            self.savings = self.savings - withdrawAmount
+        return int(self.savings)
+
+    def depositMoney(self, depositAmount) -> int:
+        if self.savings <= 20000:
+            self.savings = self.savings + depositAmount - 100
+        else:
+            self.savings = self.savings + depositAmount
+        return int(self.savings)
+
+    def pastime(self, days: int):
+        while days > 0:
+            self.savings += 0.25
+            days -= 1
+        return self.savings
+
+user1 = BankAccount("Chase", "Claire Simmmons", 30000)
+print(user1.withdrawMoney(2000))
+print(user1.depositMoney(10000))
+print(user1.pastime(93))
+
+user2 = BankAccount("Bank Of America", "Remy Clay", 10000)
+
+print(user2.withdrawMoney(5000))
+print(user2.depositMoney(12000))
+print(user2.pastime(505))
