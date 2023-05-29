@@ -218,3 +218,59 @@ def onesComplement(bits):
             onesComplement += '1'
     return onesComplement
 
+# 回文（数値）
+# めっちゃ遠回りなやり方をしていた。
+def reverse(n: int) -> int:
+    reverse_num = 0
+    while n > 0:
+        digit = n % 10
+        reverse_num = reverse_num * 10 + digit
+        n = n // 10
+    return reverse_num
+
+def isPalindromeInteger(n: int) -> bool:
+    reverse_num = reverse(n)
+
+    while n > 0:
+        if n % 10 != reverse_num % 10:
+            return False
+        n = n // 10
+        reverse_num = reverse_num // 10
+
+    return True
+
+# 修正コード。lengthでシンプルにかける
+import math
+def isPalindromeInteger(n):
+    s = str(n)
+    length = len(s)
+    mid = math.floor(length/2)
+
+    for i in range(mid +1):
+        # i番目と反対側が等しいかどうかをチェック
+        if s[i] != s[length - 1 - i]: return False
+
+    return True
+
+# 10進数から2進数に変換
+def decimalToBinary(decNumber: int) -> str:
+    number_list = []
+    number_list.append(decNumber)
+    while decNumber > 1:
+        decNumber = decNumber // 2
+        number_list.append(decNumber)
+
+    out_put = ''
+    for i in range(1, len(number_list)+1):
+        out_put += str(number_list[-i] % 2)
+    return out_put
+
+# リファクタしたコード
+def refactorDecimalToBinay(decNumber: int) -> str:
+    bit = ''
+    while decNumber >= 1:
+        print(bit)
+        bit = ('0' if decNumber % 2 == 0 else '1') + bit
+        decNumber = decNumber // 2
+
+    return bit
