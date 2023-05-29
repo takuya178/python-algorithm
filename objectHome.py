@@ -152,3 +152,47 @@ user2 = BankAccount("Bank Of America", "Remy Clay", 10000)
 print(user2.withdrawMoney(5000))
 print(user2.depositMoney(12000))
 print(user2.pastime(505))
+
+
+class Files:
+    def __init__(self, fileName: str, fileExtension: str, content: str, parentFolder: str):
+        self.fileName = fileName
+        self.fileExtension = fileExtension
+        self.content = content
+        self.parentFolder = parentFolder
+
+    def getLifetimeBandwidthSize(self) -> str:
+        size = len(self.content) * 25
+        return str(size / 1000) + 'GB' if size >= 1000 else str(size) + 'MB'
+
+    def prependContent(self, data: str) -> str:
+        self.content = data + self.content
+        return self.content
+
+    def addContent(self, data: str, position: int) -> str:
+        if position == 0: return data + self.content
+        return self.content[:position] + data + self.content[position:]
+
+    def showFileLocation(self):
+        fileLocation = self.parentFolder + ' > ' + self.fileName
+        if self.fileExtension == '.word':
+            return fileLocation + '.word'
+        elif self.fileExtension == '.png':
+            return fileLocation + '.png'
+        elif self.fileExtension == '.mp4':
+            return fileLocation + '.mp4'
+        elif self.fileExtension == '.pdf':
+            return fileLocation + '.pdf'
+        else:
+            return fileLocation + '.txt'
+
+assignment = Files("assignment", ".word", "ABCDEFGH", "homework")
+print(assignment.getLifetimeBandwidthSize())
+print(assignment.prependContent("MMM"))
+print(assignment.addContent("hello world", 5))
+print(assignment.showFileLocation())
+
+blade = Files("blade", ".php", "bg-primary text-white m-0 p-0 d-flex justify-content-center", "view")
+print(blade.getLifetimeBandwidthSize())
+print(blade.addContent("font-weight-bold ", 11))
+print(blade.showFileLocation())
