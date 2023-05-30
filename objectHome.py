@@ -196,3 +196,46 @@ blade = Files("blade", ".php", "bg-primary text-white m-0 p-0 d-flex justify-con
 print(blade.getLifetimeBandwidthSize())
 print(blade.addContent("font-weight-bold ", 11))
 print(blade.showFileLocation())
+
+class Product:
+    def __init__(self, title: str, price: int):
+        self.title = title
+        self.price = price
+
+class InvoiceItem:
+    def __init__(self, product: Product, quantity: int):
+        self.product = product
+        self.quantity = quantity
+        self.next = None
+
+    def getTotalPrice(self) -> int:
+        return self.product.price * self.quantity
+
+class Invoice:
+    def __init__(self, invoiceNumber: str, invoiceItemHead: InvoiceItem):
+        self.invoiceNumber = invoiceNumber
+        self.invoiceItemHead = invoiceItemHead
+
+    def amountDue(self, taxes: bool) -> int:
+        currentHead = self.invoiceItemHead
+        amount = 0
+        while currentHead is not None:
+            amount += currentHead.getTotalPrice()
+            currentHead = currentHead.next
+
+        return amount * 1.10 if taxes else amount
+
+product1 = Product("shampoo", 10)
+product2 = Product("conditioner", 5)
+product3 = Product("tooth brush", 3)
+
+firstItem = InvoiceItem(product1, 7)
+secondItem = InvoiceItem(product2, 9)
+thirdItem = InvoiceItem(product3, 10)
+
+firstItem.next = secondItem
+secondItem.next = thirdItem
+
+invoice = Invoice("UC1234567890", firstItem)
+print(invoice.amountDue(False))
+print(invoice.amountDue(True))
