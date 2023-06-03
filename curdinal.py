@@ -111,3 +111,12 @@ def addEveryOtherElement2(intArr):
     for i in intArr[::2]:
         sumOfArr += i
     return sumOfArr
+
+def charInBagOfWordsCount(bagOfWords: list, keyCharacter: int):
+    count = 0
+    for i in range(len(bagOfWords)):
+        for j in range(len(bagOfWords[i])):
+            if bagOfWords[i][j] == keyCharacter:
+                count += 1
+
+    return count
