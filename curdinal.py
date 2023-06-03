@@ -1,156 +1,28 @@
-# def commonPrefix(s1: str, s2: str):
-#     return helperPrefix(s1, s2, 0, "")
-#
-#
-# def helperPrefix(s1: str, s2: str, index: int, output: str) -> str:
-#     if s1[index] != s2[index] or len(s1) <= index or len(s2) <= index: return output
-#     return helperPrefix(s1, s2, index + 1, output + s1[index])
-#
-# print(commonPrefix("abcdefg","abcxyz"))
-#
-# def numberOfDots(x: int) -> int:
-#     return helperOfDots(x, 1, 0)
-#
-# def helperOfDots(x: int, index: int, result: int) ->int:
-#     if x == 0: return result
-#
-#     return helperOfDots(x - 1, index + 1, index + result)
-#
-# def totalSquareArea(x: int) -> int:
-#     return helperSquareArea(x, 1, 0)
-#
-# def helperSquareArea(x: int, index: int, result: int) -> int:
-#     if x == 0: return result
-#     return helperSquareArea(x - 1, index + 1, result + ((index ** 2) * index))
-#
-#
-# def sheeps(count: int) -> str:
-#     return helperSheeps(count, 1, '')
-#
-# def helperSheeps(count: int, index:int, result: str) -> str:
-#     if count == 0: return result
-#
-#     return helperSheeps(count - 1, index + 1, result + f"{index} sheep ~ ")
-#
-# def reverseString(s: str) -> str:
-#     helperString(s, 0, "")
-#
-# def helperString(s: str, index: int, result: str) -> str:
-#     if len(s) < index: return result
-#     return helperString(s, index + 1, result + s[index:])
-#
-#
-# b = "hello"
-# print(b[1:])
-#
-# def reverseString(s: str) -> str:
-#     return helperString(s, 0, "")
-#
-#
-# def helperString(s: str, index: int, result: str) -> str:
-#     if len(s) <= index: return result
-#     return helperString(s, index + 1, s[index] + result)
-#
-# print(reverseString("abcd"))
-#
-# def countDivisibleByK(n: int, k: int) -> int:
-#     return helperDivisibleByK(n, k, 0)
-#
-# def helperDivisibleByK(n: int, k: int, index: int) -> int:
-#     if n % k != 0: return index
-#
-#     return index + helperDivisibleByK(n / k, k, index + 1)
-#
-# def countMath(n: int, k: int) -> int:
-#     if n % k != 0: return 0
-#     return 1 + countMath(n / k, k)
-#
-# print(countMath(30, 7))
-#
-# def maximumPeople(x,y):
-#    if y % x == 0: return x
-#    return maximumPeople(y % x, y)
-#
-# import math
-#
-# def irreducibleFraction(x: int, y: int) -> str:
-#    two_gcd = twoGCD(x, y)
-#    if math.floor(y / two_gcd) == 1:
-#       return f"{math.floor(x / two_gcd)}"
-#    else:
-#       return f"{math.floor(x / two_gcd)}/{math.floor(y / two_gcd)}"
-#
-# def twoGCD(x, y):
-#    if x % y == 0: return y
-#    return twoGCD(y, x % y)
-#
-# print(irreducibleFraction(24, 42))
-#
-# def changeSealsWithBread(breadCount: int, sticker: int, seals: int) -> int:
-#    if seals < sticker: return breadCount
-#    return changeSealsWithBread(breadCount + 1, sticker, (seals - sticker) + 1)
-#
-# def maxBread(money: int, price: int, sticker: int) -> int:
-#    seals, breadCount = money // price, money // price
-#    return changeSealsWithBread(breadCount, sticker, seals)
-#
-#
-# print(maxBread(10,2,3))
-
-# リスト内の要素の足し合わせ
-def addEveryOtherElement(intArr):
-    addNumber = 0
-    for i in range(len(intArr)):
-        if i % 2 == 0:
-            addNumber += intArr[i]
-    return addNumber + intArr[0]
-
-# 1つ飛ばしする方法
-def addEveryOtherElement2(intArr):
-    sumOfArr = 0
-    for i in intArr[::2]:
-        sumOfArr += i
-    return sumOfArr
-
-def charInBagOfWordsCount(bagOfWords: list, keyCharacter: int):
-    count = 0
-    for i in range(len(bagOfWords)):
-        for j in range(len(bagOfWords[i])):
-            if bagOfWords[i][j] == keyCharacter:
-                count += 1
-
-    return count
-import string
-
-def createAscObj():
-    obj = {}
-    ascNum = 97
-    for char in string.ascii_lowercase:
-        obj[char] = ascNum
-        ascNum += 1
-
-    return obj
-
-def isFirstStringLarger(s1: str, s2: str) -> bool:
-    sumS1Number = 0
-    sumS2Number = 0
-    s1 = s1.lower().replace(' ', '')
-    s2 = s2.lower().replace(' ', '')
-    for i in range(len(s1)):
-        sumS1Number += createAscObj()[s1[i]]
-    for i in range(len(s2)):
-        sumS2Number += createAscObj()[s2[i]]
-
-    return True if sumS1Number > sumS2Number else False
+def sumCardNumber(cardList: list):
+    obj = {'A': 1, 'J': 11, 'Q': 12, 'K': 13}
+    sumNumber = 0
+    for i in range(len(cardList)):
+        sliceStr = cardList[i][1:]
+        if cardList[i][1] in obj:
+            sumNumber += obj[sliceStr]
+        else:
+            sumNumber += int(sliceStr)
+    return sumNumber
 
 
+def winnerBlackjack(playerCards: list, houseCards: list) -> bool:
+    sumPlayerNumber = sumCardNumber(playerCards)
+    sumHouseNumber = sumCardNumber(houseCards)
+    if sumPlayerNumber > 21: return False
+    if sumHouseNumber < 22 and sumPlayerNumber < sumHouseNumber: return False
+    if sumPlayerNumber == sumHouseNumber: return False
 
-def isFirstStringLarger(s1,s2):
-    return getAscii(s1) > getAscii(s2)
+    return True
 
-def getAscii(string):
-    sumOfAscii = 0
-    for char in string.lower():
-        sumOfAscii += ord(char)
-    return sumOfAscii
+print(winnerBlackjack(["♥10","♥6","♣K"],["♠Q","♦2","♥K"]) )
 
+a = ["♣4","♥7","♥7"]
+print(int(a[0][1]))
+
+b = '12'
+print(b[1:])
