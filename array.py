@@ -21,3 +21,20 @@ def sortByMaxMin(arr: int):
         arr.remove(minNumber)
 
     return sortList
+
+def addEveryOtherElement(intArr):
+
+# リスト内の要素の足し合わせ
+def addEveryOtherElement(intArr):
+    addNumber = 0
+    for i in range(len(intArr)):
+        if i % 2 == 0:
+            addNumber += intArr[i]
+    return addNumber + intArr[0]
+
+# 1つ飛ばしする方法
+def addEveryOtherElement2(intArr):
+    sumOfArr = 0
+    for i in intArr[::2]:
+        sumOfArr += i
+    return sumOfArr
