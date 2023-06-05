@@ -83,3 +83,26 @@ def getAscii(string):
     for char in string.lower():
         sumOfAscii += ord(char)
     return sumOfAscii
+
+# 間のアルファベット
+def createAlphabetList(firstAlphabet: str, secondAlphabet: str):
+    alphabetList = []
+    for char in range(ord(firstAlphabet.lower()), ord(secondAlphabet.lower())+1):
+        alphabetList.append(chr(char))
+    return alphabetList
+
+def generateAlphabet(firstAlphabet: str, secondAlphabet: str):
+    return createAlphabetList(firstAlphabet, secondAlphabet) if ord(firstAlphabet.lower()) <= ord(secondAlphabet.lower()) else createAlphabetList(secondAlphabet, firstAlphabet)
+
+def generateAlphabet(firstAlphabet,secondAlphabet):
+    first = firstAlphabet.lower()
+    second = secondAlphabet.lower()
+
+    smaller = ord(second) if ord(first) > ord(second) else ord(first)
+    larger = ord(second) if ord(first) < ord(second) else ord(first)
+    res = []
+
+    for i in range(smaller, larger+1):
+        res.append(chr(i))
+
+    return res
