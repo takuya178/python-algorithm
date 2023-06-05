@@ -1,87 +1,54 @@
-def sumCardNumber(cardList: list):
-    obj = {'A': 1, 'J': 11, 'Q': 12, 'K': 13}
-    sumNumber = 0
-    for i in range(len(cardList)):
-        sliceStr = cardList[i][1:]
-        if cardList[i][1] in obj:
-            sumNumber += obj[sliceStr]
-        else:
-            sumNumber += int(sliceStr)
-    return sumNumber
+class Animal:
+    def __init__(self, species: str, weightKg: int, heightM: int, predator: bool):
+        self.species = species
+        self.weightKg = weightKg
+        self.heightM = heightM
+        self.predator = predator
+
+    def domesticate(self):
+        self.predator = False
+        return self.predator
+
+class Hunter:
+    def __init__(self, name: str, weightKg: int, heighM: int, strength: int, cageCubicMeters: int):
+        self.name = name
+        self.weightKg = weightKg
+        self.heighM = heighM
+        self.strength = strength
+        self.cageCubicMeters = cageCubicMeters
+
+    def strengthKg(self) -> int:
+        return self.strength * self.weightKg
+
+    def canCaptureAnimal(self, animal: Animal) -> bool:
+        return self.strengthKg() >= animal.weightKg and self.cageCubicMeters >= animal.heightM and not animal.predator
+
+    def attemptToDomesticate(self, animal: Animal) -> bool:
+        if self.strengthKg() > animal.weightKg * 2:
+            return animal.domesticate()
+
+tiger = Animal("Tiger", 290, 2.6, True)
+cow = Animal("Cow", 1134, 1.5, False)
+snake = Animal("Snake", 100, 1.2, True)
+cat = Animal("Cat", 10, 0.5, False)
+hunternator = Hunter("Hunternator", 124.73, 1.85, 15, 3)
+animals = [tiger, cow, snake, cat]
+
+def capturedAnimals(hunternator: Hunter, animals: list):
+    for i in range(len(animals)):
+        if hunternator.canCaptureAnimal(animals[i]):
+            print(animals[i].species)
 
 
-def winnerBlackjack(playerCards: list, houseCards: list) -> bool:
-    sumPlayerNumber = sumCardNumber(playerCards)
-    sumHouseNumber = sumCardNumber(houseCards)
-    if sumPlayerNumber > 21: return False
-    if sumHouseNumber < 22 and sumPlayerNumber < sumHouseNumber: return False
-    if sumPlayerNumber == sumHouseNumber: return False
+def domesticateTheAnimals(hunternator: Hunter, animals: list) -> list:
+    for i in range(len(animals)):
+        hunternator.attemptToDomesticate(animals[i])
+    return animals
 
-    return True
+capturedAnimals(hunternator, animals)
 
-print(winnerBlackjack(["♥10","♥6","♣K"],["♠Q","♦2","♥K"]) )
-
-a = ["♣4","♥7","♥7"]
-print(int(a[0][1]))
-
-b = '12'
-print(b[1:])
+domesticateTheAnimals(hunternator, animals)
+capturedAnimals(hunternator, animals)
 
 
-def validEmailList(emailList: list):
-    validEmailList = []
-    for i in range(len(emailList)):
-        email = emailList[i]
-        if ' ' not in email and email.count('@') == 1 and email.index('@') < email.rfind('.') and email[0] != '@':
-            validEmailList.append(email)
-    return validEmailList
 
-print(validEmailList(["ccc@aaa.com","c@cc@aaa.com","cc c@aaa.com","cc.c@aaa.com"]))
-
-a = "cc.c@aaa.com"
-print(a.index('.'))
-
-# def createAlphabetList(firstAlphabet: str, secondAlphabet: str):
-#     alphabetList = []
-#     for char in range(ord(firstAlphabet), ord(secondAlphabet)+1):
-#         alphabetList.append(chr(char))
-#     return alphabetList
-#
-# def generateAlphabet(firstAlphabet: str,secondAlphabet: str):
-#     return createAlphabetList(firstAlphabet.lower(), secondAlphabet.lower()) if ord(firstAlphabet) <= ord(secondAlphabet) else createAlphabetList(secondAlphabet.lower(), firstAlphabet.lower())
-#
-# print(generateAlphabet('a','z'))
-# print(generateAlphabet('b','b'))
-# print(generateAlphabet('C','Z'))
-# print(generateAlphabet('M','z'))
-# print(generateAlphabet('z','a'))
-# print(generateAlphabet('T','s'))
-
-def createAlphabetList(firstAlphabet: str, secondAlphabet: str):
-    alphabetList = []
-    for char in range(ord(firstAlphabet.lower()), ord(secondAlphabet.lower())+1):
-        alphabetList.append(chr(char))
-    return alphabetList
-
-def generateAlphabet(firstAlphabet: str, secondAlphabet: str):
-    return createAlphabetList(firstAlphabet, secondAlphabet) if ord(firstAlphabet.lower()) <= ord(secondAlphabet.lower()) else createAlphabetList(secondAlphabet, firstAlphabet)
-
-print(generateAlphabet('a', 'z'))
-print(generateAlphabet('b', 'b'))
-print(generateAlphabet('C', 'Z'))
-print(generateAlphabet('M', 'z'))
-print(generateAlphabet('z', 'a'))
-print(generateAlphabet('T', 's'))
-
-def generateAlphabet(firstAlphabet,secondAlphabet):
-    first = firstAlphabet.lower()
-    second = secondAlphabet.lower()
-
-    smaller = ord(second) if ord(first) > ord(second) else ord(first)
-    larger = ord(second) if ord(first) < ord(second) else ord(first)
-    res = []
-
-    for i in range(smaller, larger+1):
-        res.append(chr(i))
-
-    return res
