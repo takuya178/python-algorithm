@@ -160,3 +160,15 @@ capturedAnimals(hunternator, animals)
 
 domesticateTheAnimals(hunternator, animals)
 capturedAnimals(hunternator, animals)
+
+# 最大文字列
+def maxAscilString(stringList: list) -> int:
+    asciList = []
+    asciNumber = 0
+    for i in range(len(stringList)):
+        for j in range(len(stringList[i])):
+            asciNumber += ord(stringList[i][j])
+        asciList.append(asciNumber)
+        asciNumber = 0
+
+    return asciList.index(max(asciList))
