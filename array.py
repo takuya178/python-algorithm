@@ -172,3 +172,15 @@ def maxAscilString(stringList: list) -> int:
         asciNumber = 0
 
     return asciList.index(max(asciList))
+
+# 部屋替え 難
+def rotateByTimes(ids: list, n: int) -> list:
+    if n == 0:
+        return ids
+
+    rotated_ids = [0] * len(ids)
+    for i in range(len(ids)):
+        new_index = (i + n) % len(ids)
+        rotated_ids[new_index] = ids[i]
+
+    return rotated_ids
