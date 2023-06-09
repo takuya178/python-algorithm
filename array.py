@@ -184,3 +184,48 @@ def rotateByTimes(ids: list, n: int) -> list:
         rotated_ids[new_index] = ids[i]
 
     return rotated_ids
+
+# ページ付け
+def websitePagination(urls: list, pageSize: int, page: int) -> list:
+    pagenationList = []
+    pageList = []
+    finishNum = len(urls) % pageSize
+    while len(urls) > finishNum:
+        pageList.append(urls[0])
+        urls = urls[1:]
+        if len(pageList) == pageSize:
+            pagenationList.append(pageList)
+            pageList = []
+
+    if len(urls) > 0: pagenationList.append(urls)
+
+    return pagenationList[page-1]
+# ページ付け リファクタリング
+def websitePagination(urls,pageSize,page):
+    index = pageSize * (page - 1)
+    output = []
+
+    while index < len(urls) and pageSize > 0:
+        output.append(urls[index])
+        index += 1
+        pageSize -= 1
+
+    return output
+
+# シャトルラン
+def hasPenalty(records: list) -> bool:
+    isPenalty = True
+    while len(records) > 1:
+        if records[0] < records[1] or records[0] == records[1]:
+            isPenalty = False
+        else:
+            isPenalty = True
+            break
+        records = records[1:]
+    return isPenalty
+
+# シャトルラン リファクタ Trueの時にループ抜ける方法の方がいいよね
+def hasPenalty(records):
+    for i in range(1, len(records)):
+        if records[i-1] > records[i]: return True
+    return False
