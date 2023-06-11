@@ -303,3 +303,13 @@ def canMakeTargetVal(arr,target):
         for j in range(i+1, len(arr)):
             if arr[i] + arr[j] == target: return True
     return False
+
+# 探索
+def videosToWatch(time: list, dailyGoal: int) -> int:
+    goalNum = 0
+    for i in range(len(time)):
+        goalNum += time[i]
+        if goalNum >= dailyGoal:
+            return i+1
+
+    return -1

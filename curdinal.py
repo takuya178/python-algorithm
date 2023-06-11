@@ -72,5 +72,14 @@ def canMakeTargetVal(arr,target):
             if arr[i] + arr[j] == target: return True
     return False
 
-print(canMakeTargetVal([3,4,2,5,1],15))
 
+def videosToWatch(time: list, dailyGoal: int) -> int:
+    goalNum = 0
+    for i in range(len(time)):
+        goalNum += time[i]
+        if goalNum >= dailyGoal:
+            return i+1
+
+    return -1
+
+print(videosToWatch([1,2,1,3,4],5))
