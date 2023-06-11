@@ -44,16 +44,16 @@ def isMountain(height):
 
     return isHeight
 
-print(isMountain([1,2,3,2])) # True
-print(isMountain([1,2]))
-print(isMountain([2,1]))
-print(isMountain([1,2,2,2,2]))
-print(isMountain([1,2,3]) )
-print(isMountain([4,3,2,1]))
-print(isMountain([1,2,2,2,3,2])) # 高さは初めは上がり続ける
-print(isMountain([3,2,2,2,1,1]))
-print(isMountain([10,20,30,400,500,10])) # True
-print(isMountain([100,200,100,400,500,100]))
-print(isMountain([100,200,300,200,100,300]))
-print(isMountain([100,50,100,200,300,400]))
-print(isMountain([53,158,477,994,994,867,797,755,744,621,616])) # 頂点の値が同じ
+
+def maxOfPairSum(arr1: list, arr2: list, x: int):
+    sumList = []
+    for i in range(len(arr1)):
+        sumNum = 0
+        for j in range(len(arr2)):
+            sumNum = arr1[i] + arr2[j]
+            if sumNum < x: sumList.append(sumNum)
+
+    return max(sumList) if len(sumList) > 0 else 'no pair'
+
+print(maxOfPairSum([2,8,7],[1,5,6],10))
+print(maxOfPairSum([583,114,925,669,402,7,84,747],[655,797,905,843,652,841,893],260))

@@ -273,3 +273,15 @@ def isMountain(height):
 
     # 配列の末尾まで降順が続いていなかったらfalseを返します
     return i == l
+
+# x未満の最大値
+def maxOfPairSum(arr1: list, arr2: list, x: int):
+    sumList = []
+    for i in range(len(arr1)):
+        sumNum = 0
+        for j in range(len(arr2)):
+            sumNum = arr1[i] + arr2[j]
+            if sumNum < x: sumList.append(sumNum)
+
+    return max(sumList) if len(sumList) > 0 else 'no pair'
+
