@@ -55,5 +55,22 @@ def maxOfPairSum(arr1: list, arr2: list, x: int):
 
     return max(sumList) if len(sumList) > 0 else 'no pair'
 
-print(maxOfPairSum([2,8,7],[1,5,6],10))
-print(maxOfPairSum([583,114,925,669,402,7,84,747],[655,797,905,843,652,841,893],260))
+def canMakeTargetVal(arr: list, target: int) -> bool:
+    sumList = []
+    for i in range(len(arr)):
+        sumNum = 0
+        for j in range(len(arr)):
+            if arr[j] == arr[i]: continue
+            sumNum = arr[i] + arr[j]
+            sumList.append(sumNum)
+
+    return target in sumList
+
+def canMakeTargetVal(arr,target):
+    for i in range(len(arr)-1):
+        for j in range(i+1, len(arr)):
+            if arr[i] + arr[j] == target: return True
+    return False
+
+print(canMakeTargetVal([3,4,2,5,1],15))
+

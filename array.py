@@ -285,3 +285,21 @@ def maxOfPairSum(arr1: list, arr2: list, x: int):
 
     return max(sumList) if len(sumList) > 0 else 'no pair'
 
+# 合計値が等しい
+def canMakeTargetVal(arr: list, target: int) -> bool:
+    sumList = []
+    for i in range(len(arr)):
+        sumNum = 0
+        for j in range(len(arr)):
+            if arr[j] == arr[i]: continue
+            sumNum = arr[i] + arr[j]
+            sumList.append(sumNum)
+
+    return target in sumList
+
+# 合計値が等しい リファクタリング
+def canMakeTargetVal(arr,target):
+    for i in range(len(arr)-1):
+        for j in range(i+1, len(arr)):
+            if arr[i] + arr[j] == target: return True
+    return False
