@@ -83,3 +83,51 @@ def videosToWatch(time: list, dailyGoal: int) -> int:
     return -1
 
 print(videosToWatch([1,2,1,3,4],5))
+
+
+def characterLocation(commands: str) -> list:
+    obj = {'N': 1, 'E': 1, 'W': -1, 'S': -1}
+    x, y = 0, 0
+    for i in range(len(commands)):
+        if commands[i] == 'N':
+            y += obj[commands[i]]
+        elif commands[i] == 'E':
+            x += obj[commands[i]]
+        elif commands[i] == 'W':
+            x += obj[commands[i]]
+        elif commands[i] == 'S':
+            y += obj[commands[i]]
+
+    return [x, y]
+
+def tabulationFib(n):
+    # これはキャッシュであり、計算済みのフィボナッチ数をすべて保存します
+    # 全てを 0 に設定します
+    cache = [0] * (n+1)
+
+    # fib0 は 0、fib1 は 1 であり、他のすべての数は fib(n) = fib(n-1) + fib(n-2) を使って求めることができます
+    cache[0] = 0
+    cache[1] = 1
+
+    # 反復を使って全ての数を求めます
+    for i in range(2, n+1):
+        cache[i] = cache[i-1] + cache[i-2]
+
+    # n 番目のフィボナッチを返します
+    return cache[n]
+
+print(tabulationFib(50))
+
+# 97 ~ 122
+def isPangram(string: str) -> bool:
+    ordList = []
+    string = string.lower().replace(' ', '')
+    for i in range(len(string)):
+        if ord(string[i]) >= 122:
+            ordList.append(ord(string[i]))
+
+        if ordList in ord(string[i]): continue
+
+    return True if len(ordList) == 26 else False
+
+

@@ -313,3 +313,26 @@ def videosToWatch(time: list, dailyGoal: int) -> int:
             return i+1
 
     return -1
+
+# パングラム
+def isPangram(string: str) -> bool:
+    ordList = []
+    string = string.lower().replace(' ', '')
+    for i in range(len(string)):
+        if ord(string[i]) >= 122:
+            ordList.append(ord(string[i]))
+
+        if ordList in ord(string[i]): continue
+
+    return True if len(ordList) == 26 else False
+
+# パングラム キャッシュを使ったリファクタ
+def isPangram(string):
+    cache = [0] * 26
+
+    for char in string:
+        ascii = ord(char.lower())
+        if ascii >= 97 and ascii <= 122: 
+            cache[ascii - 97] = 1
+
+    return not min(cache) == 0
