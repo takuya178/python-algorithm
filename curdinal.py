@@ -130,4 +130,29 @@ def isPangram(string: str) -> bool:
 
     return True if len(ordList) == 26 else False
 
+def fireEmployees(employees: list, unemployed: list):
+    initEmployees = []
+    for i in range(len(employees)):
+        if not employees[i] in unemployed:
+            initEmployees.append(employees[i])
+
+    return initEmployees
+
+
+def isPrime(n) -> bool:
+    if n < 2:
+        return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
+
+def primesUpToNCount(n):
+    primeList = []
+    for i in range(1, n):
+        if isPrime(i):
+            primeList.append(i)
+    return len(primeList)
+
+
 

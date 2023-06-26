@@ -336,3 +336,11 @@ def isPangram(string):
             cache[ascii - 97] = 1
 
     return not min(cache) == 0
+
+# 配列のシャッフル
+def shuffledPositions(arr: list, shuffledArr: list) -> list:
+    result = []
+    for i in range(len(shuffledArr)):
+        result.append(shuffledArr.index(arr[i]))
+
+    return result
