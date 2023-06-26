@@ -344,3 +344,13 @@ def shuffledPositions(arr: list, shuffledArr: list) -> list:
         result.append(shuffledArr.index(arr[i]))
 
     return result
+
+# シャッフルの結合
+import math
+def shuffleSuccessRate(arr: list, shuffledArr: list) -> int:
+    correct_list = []
+    for i in range(len(arr)):
+        if arr[i] != shuffledArr[i]:
+            correct_list.append(arr[i])
+
+    return math.floor((len(correct_list) / len(arr)) * 100)
