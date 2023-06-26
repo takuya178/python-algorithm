@@ -354,3 +354,19 @@ def shuffleSuccessRate(arr: list, shuffledArr: list) -> int:
             correct_list.append(arr[i])
 
     return math.floor((len(correct_list) / len(arr)) * 100)
+
+# 配列の交点
+def listIntersection(targetList: list, searchList: list) -> list:
+    hash = {}
+    list = []
+    for i in range(len(targetList)):
+        hash[targetList[i]] = targetList[i]
+
+    for i in range(len(searchList)):
+        if searchList[i] in list or not searchList[i] in hash:
+            continue
+        else:
+            list.append(hash[searchList[i]])
+
+    list.sort()
+    return list
