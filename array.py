@@ -370,3 +370,55 @@ def listIntersection(targetList: list, searchList: list) -> list:
 
     list.sort()
     return list
+
+# モンスターの出現回数
+def appearTheMost(levels: list) -> list:
+    hash = {}
+    list = []
+    for i in range(len(levels)):
+        if levels[i] in hash:
+            hash[levels[i]] = hash[levels[i]]+1
+        else:
+            hash[levels[i]] = 1
+
+    for i in range(len(levels)):
+        if hash[levels[i]] == max(hash.values()):
+            if levels[i] in list: continue
+            list.append(levels[i])
+    list.sort()
+    return list
+
+# アラブ人による頻度分析
+def charFrequency(message):
+    message = message.replace(' ', '')
+    hash = {}
+    list = []
+    for i in range(len(message)):
+        if message[i] in hash:
+            hash[message[i]] = hash[message[i]]+1
+        else:
+            hash[message[i]] = 1
+
+    message = ''.join(sorted(set(message)))
+    for i in range(len(message)):
+        list.append(f'{message[i]} : {hash[message[i]]}')
+
+    return list
+
+# アラブ人の解説
+def charFrequency(message):
+    # スペースを除きます。
+    s = message.replace(' ', '')
+
+    hashmap = {}
+    res = []
+
+    for i in range(len(s)) :        
+        if s[i] not in hashmap : hashmap[s[i]] = 1
+        else : hashmap[s[i]] += 1
+
+    for key in hashmap :
+        res.append(str(key) + " : " + str(hashmap[key]))
+
+    # アルファベット順にソートします。
+    return sorted(res)
