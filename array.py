@@ -422,3 +422,15 @@ def charFrequency(message):
 
     # アルファベット順にソートします。
     return sorted(res)
+
+# 
+def twoSum(intArr: list, sumInt: list) -> list:
+    list = []
+    for i in range(len(intArr)):
+        for j in range(i+1, len(intArr)):
+            if len(list) >= 2: break
+            if (intArr[i] + intArr[j] == sumInt):
+                list.append(i)
+                list.append(j)
+    print(list)
+    return list if len(list) > 0 else []
