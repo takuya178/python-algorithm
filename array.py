@@ -434,3 +434,65 @@ def twoSum(intArr: list, sumInt: list) -> list:
                 list.append(j)
     print(list)
     return list if len(list) > 0 else []
+
+def missingItems(listA: list, listB: list) -> list:
+    hash = {}
+    results = []
+    for i in range(len(listB)):
+        hash[listB[i]] = listB[i]
+
+    for i in range(len(listA)):
+        if not listA[i] in hash: results.append(listA[i])
+
+    return results
+missingItems([1,2,3,4,5,6,7,8],[1,3,5])
+
+def hasSameType(user1: str, user2: str):
+    if len(user1) != len(user2): return False
+
+    hash = {}
+    for i in range(len(user1)):
+        hash[user1[i]] = user2[i]
+
+    values = list(hash.values())
+    if len(values) == len(set(values)): return False
+
+    for i in range(len(user1)):
+        if hash[user1[i]] != user2[i]:
+            return False
+            break
+
+    return True
+
+def findPairs(numbers: list) -> list:
+    hash_map = {}
+    results = []
+    for i in range(len(numbers)):
+        if numbers[i] in hash_map:
+            hash_map[numbers[i]] = hash_map[numbers[i]] + 1
+        else:
+            hash_map[numbers[i]] = 1
+
+    for i in range(len(numbers)):
+        if numbers[i] in results: continue
+        if hash_map[numbers[i]] == 2: results.append(numbers[i])
+
+    return sorted(results)
+findPairs([10,12,13,14,15,16,16,7,7,8])
+
+def firstNonRepeating(s: str):
+    hash_map = {}
+    list = []
+    for i in range(len(s)):
+        if s[i] in hash_map:
+            hash_map[s[i]][1] += 1
+        else:
+            hash_map[s[i]] = [i, 1]
+
+    for i in range(len(s)):
+        if hash_map[s[i]][1] == 1:
+            list.append(hash_map[s[i]][0])
+
+    return min(list) if len(list) > 0 else -1
+
+firstNonRepeating("aabbcdddeffg")
