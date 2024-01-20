@@ -1,16 +1,5 @@
-# def doYouFail(string, absences=0):
-#     if not string:
-#         return "pass" if absences < 3 else "fail"
-#
-#     if string[0] == "A":
-#         return doYouFail(string[1:], absences + 1)
-#     else:
-#         return doYouFail(string[1:], absences)
-#
-#
-# print(doYouFail("AAPPAP"))
-#
-#
+import math
+
 def doYouFail(string):
     return helperDoYouFail(string, 0)
 
@@ -42,3 +31,26 @@ def helperTotalOfFirstAndLastDigits(n: str, count: int):
 
 
 print(totalOfFirstAndLastDigits(12345))
+
+
+def powerXOfN(x, n):
+    if n == 0:
+        return 1.0
+
+    if n > 0:
+        return round(powerXOfN(x, n - 1) * x, 1)
+    else:
+        return round(powerXOfN(x, n + 1) / x, 1)
+
+print(powerXOfN(2,5)) # 32
+print(powerXOfN(2.1,3)) # 9.2
+print(powerXOfN(2,-2)) # 0.2
+print(powerXOfN(3,-7)) # 0
+
+
+def infectedPeople(day):
+    if day == 0:
+        return 1
+    return infectedPeople(day - 1) * 2
+
+print(infectedPeople(2))
