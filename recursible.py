@@ -15,8 +15,6 @@ def helperDoYouFail(string: str, absence_cnt: int):
 
 print(doYouFail("AAPPAP"))
 
-
-
 def totalOfFirstAndLastDigits(n):
     if len(str(n)) == 1:
         return n
@@ -29,9 +27,7 @@ def helperTotalOfFirstAndLastDigits(n: str, count: int):
 
     return helperTotalOfFirstAndLastDigits(n, count + 1)
 
-
 print(totalOfFirstAndLastDigits(12345))
-
 
 def powerXOfN(x, n):
     if n == 0:
@@ -54,3 +50,23 @@ def infectedPeople(day):
     return infectedPeople(day - 1) * 2
 
 print(infectedPeople(2))
+
+
+def reduceByFive(num) -> str:
+    minus = helperMinusReduceByFive(num, [num])
+    plus = helperPlusReduceByFive(num, minus[-1], [])
+    return ', '.join(map(str, (minus+plus)))
+
+def helperMinusReduceByFive(num, list) -> list:
+    if num < 0:
+        return list
+    list.append(num - 5)
+    return helperMinusReduceByFive(num - 5, list)
+
+def helperPlusReduceByFive(num, min_num, list) -> list:
+    if num == min_num:
+        return list
+    list.append(min_num + 5)
+    return helperPlusReduceByFive(num, min_num + 5, list)
+
+print(reduceByFive(16)) # 16,11,6,1,-4,1,6,11,16
