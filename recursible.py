@@ -70,3 +70,12 @@ def helperPlusReduceByFive(num, min_num, list) -> list:
     return helperPlusReduceByFive(num, min_num + 5, list)
 
 print(reduceByFive(16)) # 16,11,6,1,-4,1,6,11,16
+
+def isEven(n):
+    if n == 0:
+        return True
+    if n < 0:
+        return False
+    return isEven(n - 2)
+
+print(isEven(99))
