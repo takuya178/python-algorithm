@@ -23,6 +23,7 @@ def sortByMaxMin(arr: int):
     return sortList
 
 def addEveryOtherElement(intArr):
+    return 0
 
 # リスト内の要素の足し合わせ
 def addEveryOtherElement(intArr):
@@ -496,3 +497,33 @@ def firstNonRepeating(s: str):
     return min(list) if len(list) > 0 else -1
 
 firstNonRepeating("aabbcdddeffg")
+
+# 正解したが、hash_mapを使った実装の方がメモリ使用量減らせる
+def getMaxLength(ranks: list) -> int:
+    if len(set(ranks)) == 1:
+        return 0
+
+    player_ranks = []
+    for rank in ranks:
+        terms_list = []
+        for i in range(len(ranks)):
+            if rank == ranks[i] or rank + 1 == ranks[i]:
+                terms_list.append(ranks[i])
+        player_ranks.append(terms_list)
+
+    result = 0
+    for player_rank in player_ranks:
+        if len(set(player_rank)) == 1:
+            continue
+
+        if len(player_rank) > result:
+            result = len(player_rank)
+
+    return result if result > 1 else 0
+
+print(getMaxLength([1,2,2,2,1,3,4,4,4,3]))
+print(getMaxLength([1,2,3,4,3,2,1,2,2,1]))
+print(getMaxLength([0,0,0,0,0]))
+print(getMaxLength([0,10,20,30,40]))
+print(getMaxLength([0,0,2,10,6]))
+
