@@ -10,7 +10,7 @@ def bubble_sort(numbers: list[int]) -> List[int]:
 
 print(bubble_sort([2,5,1,8,7,3]))
 
-# select sort
+# Select sort
 def select_sort(numbers: list[int]) -> list[int]:
     for i in range(len(numbers)):
         compare_num = numbers[i]
@@ -25,3 +25,17 @@ def select_sort(numbers: list[int]) -> list[int]:
     return numbers
 
 print(select_sort([2, 5, 1, 8, 7, 3]))
+
+# Insertion sort
+def insertion_sort(numbers: list[int]):
+    for i in range(len(numbers) - 1):
+        if numbers[i] > numbers[i+1]:
+            numbers[i], numbers[i+1] = numbers[i+1], numbers[i]
+            compare_num = numbers[i]
+            for j in reversed(range(i)):
+                if compare_num < numbers[j]:
+                    numbers[j], numbers[j+1] = numbers[j+1], numbers[j]
+    return numbers
+
+print(insertion_sort([2, 5, 1, 8, 7, 3]))
+print(insertion_sort([10, 100, 1, 90, 3, 13, 45, 80, 29]))
